@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Списки завдань</title>
+    <script type="text/javascript">
+        function enableLinks() {
+            const linksArr = document.querySelectorAll("ol a");
+            const cookie = Number(('; '+document.cookie).split(`; PythonMaxLevel=`).pop().split(';')[0]);
+            for (let i = 0; i < cookie; i++) {
+                linksArr[i].removeAttribute("aria-current");
+            }
+        }
+    </script>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+</head>
+<body onload="enableLinks();">
+
+    <h1>Що це? Автоперевірки.</h1>
+    <p>Поки що це прототип незвичної LMS (системи управління навчанням). Доказ можливості навчати пітону, запускаючи його прямо в браузері на статичних веб-сторінках. Учню в браузері дається завдання, в браузері виконується, в браузері перевіряється. Без сервера.</p>
+
+    <h1>Пітон. Початок.</h1>
+    <ol><b>Вибір завдання. Синім помічені доступні:</b>
+        <li>
+            <a href="python/variable_types_1.html">Типи змінних та виведення на екран.</a>
+        </li>
+        <li>
+            <a href="python/variable_agreements_2.html" aria-current="page">Домовленості щодо назв змінних.</a>
+        </li>
+        <li>
+            <a href="python/object_attributes_3.html" aria-current="page">Атрибути об'єктів. Дані та методи.</a>
+        </li>
+        <li>
+            <a href="python/object_delete_4.html" aria-current="page">Змінні та знищення об'єктів.</a>
+        </li>
+        <li>
+            <a href="python/method_chaining_5.html" aria-current="page">Ланцюги з методів.</a>
+        </li>
+        <li>
+            <a href="python/immutable_variables_6.html" aria-current="page">Передавання змінних як оригінал чи копію.</a>
+        </li>
+        <li>
+            <a href="python/namespaces_7.html" aria-current="page">Простір імен.</a>
+        </li>
+        <li>
+            <a href="python/classes_instances_8.html" aria-current="page">Класи та інстанси.</a>
+        </li>
+        <li>
+            <a href="python/method_self_9.html" aria-current="page">Методи та self.</a>
+        </li>
+        <li>
+            <a href="python/first_parameter_10.html" aria-current="page">Перший параметр блока кода.</a>
+        </li>
+        <li>
+            <a href="python/init_constructor_11.html" aria-current="page">Конструктор __init__.</a>
+        </li>
+        <li>
+            <a href="python/base_class_12.html" aria-current="page">Базові класи.</a>
+        </li>
+        <li>
+            <a href="python/dataclasses_13.html" aria-current="page">Dataclasses.</a>
+        </li>
+        <li>
+            <a href="python/slots_14.html" aria-current="page">__slots__.</a>
+        </li>
+        <li>
+            <a href="python/finish.html" aria-current="page">Фініш.</a>
+        </li>
+    </ol>
+    <p>На даному етапі завдання не виконують навчальну функцію. Скоріш, це набір принципів. Скелет пітона. Маючи скелет, легше взяти м'ясо з інших джерел, або просто здогадатися по тексту кода. Справа майбутнього - переробити завдання під повного новачка: зробити більш численими, детальними. Для цього потрібен зворотний зв'язок з учнямі.</p>
+
+    <h1>Що планується</h1>
+    <p>Для сайтобудування потрібні три мови: для фронтенда, бекенда, та мова конкретної бази даних. І цю трійцю бажано помножити на два: знадобляться фреймворки для бека і фронта, та ORM для бази даних. Всього шість штучек.</p>
+    <p>Пітон - мова для бека. Краще почати з цієї мови. В неї багато переваг. Автоперевірками в браузері можна натаскати учня до певного рівня. Після певної кількості завдань в браузері, учню буде запропоновано встановити повноцінний <b>python</b> на компьютері. Далі до нього приєднається сервер, скажімо, <b>nginX</b>. Далі додасться... коротше, в кінці буде сайт, який працює на локальному компьютері. Залишиться відкрити доступ в інтернет або задеплоїти на якийсь хостінг.</p>
+    <p>На цьому шляху браузер продовжить видавати завдання учню. Перевірки будуть як і раніше на статичних сторінках, куди учень копіює текст своїх програм. А запускати свої програми він тепер буде у встановленому самостійно пітоні, який позбавлений обмежень браузерної версії пітону. Після запуску по локальним адресам з'явиться сайт учня. Коректність можна буде перевірити ajax-запитами.</p>
+    <p>Не обійдеться без живого вчителя. Вчитель в месенджері буде контролювати процес навчання, відповідати на питання учня. В ролі вчителя можуть виступати колишні учні. Вийде, така собі, самопідтримувана онлайн-школа програмування. Децентралізована, без сервера. Ентузіасти будуть її розвивати.</p>
+</body>
+</html>

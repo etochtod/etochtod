@@ -1,0 +1,178 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+::-webkit-scrollbar-thumb {
+    background: #bbb;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    height: 100%;
+    overflow: hidden;
+}
+
+#left {
+    background-color: #dfdfdf;
+    padding: 2vw;
+    overflow-y: auto;
+    width: 50%;
+    font-size: clamp(16px, 1.2vw, 22px);
+    line-height: clamp(24px, 2.4vw, 44px);
+}
+
+article {
+    max-width: 800px;
+    margin-inline: auto;
+    text-align: justify;
+    background-color: white;
+    padding: 2vw;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 1vw 0.2vw #e8e8e8 inset;
+}
+
+#left p {
+    text-indent: 2vw;
+}
+
+#navbar {
+    padding: max(1vw, 7px);
+    margin: -2vw -2vw 2vw -2vw;
+}
+
+#navbar a {
+    color: #eea;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px black;
+    transition: text-shadow 0.5s;
+    padding: 5px;
+}
+
+#navbar a:hover {
+    background-color: gray;
+    box-shadow: 0 0 5px black;
+    border-radius: 5px;
+}
+
+#navbar a:hover, #reset:hover, #run:hover, #next:hover {
+    color: yellow;
+    text-shadow: 0 0 10px yellow;
+}
+
+h2 {
+    color: #444;
+    text-align:center;
+    font-size: clamp(24px, 2vw, 36px);
+}
+
+i {
+    color: blue;
+}
+
+.blue {
+    color: #008;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+pre {
+    text-align: left;
+    color: #008;
+    background-color: #ddd;
+    white-space: pre-wrap;
+    font-family: Consolas, 'Courier New', Courier, monospace;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 1vw 0.2vw #e8e8e8;
+    border-radius: 10px;
+    padding: 1vw;
+}
+
+#right {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+}
+
+#tArea {
+    flex-shrink: 0;
+    width: calc(100%-4px);
+    resize: none;
+    padding-left: 7px;
+    outline: 1px solid gray;
+    white-space: nowrap;
+    height: 50%;
+}
+
+#dragger {
+    background-color: #ffb;
+    flex-shrink: 0;
+    height: 5px;
+    width: 100%;
+    cursor: row-resize;
+}
+
+#dragger:hover {
+    background-color: yellow;
+}
+
+#run, #reset, #next {
+    display: inline-block;
+    width: calc(50% - 26px);
+    margin: 5px 0 5px 10px;
+    padding: 5px;
+    color: #ffb;
+    background-color: gray;
+    text-align: center;
+    cursor: pointer;
+    transition: text-shadow 0.25s;
+}
+
+#next {
+    width: calc(100% - 32px);
+    display: none;
+}
+
+#tArea, #result, #result div {
+    font: clamp(18px, 1.2vw, 26px)/clamp(22px, 2.2vw, 44px) Consolas, 'Courier New', Courier, monospace;
+}
+
+#result {
+    color: #008;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+#triggers div {
+    background-color: #ddd;
+    margin: 10px;
+    padding: 5px;
+}
+
+@media (min-resolution: 125dpi) {
+    #left {
+        font-size: clamp(14px, 1vw, 18px);
+        line-height: clamp(22px, 2.2vw, 38px);
+    }
+
+    article {
+        max-width: 550px;
+    }
+}

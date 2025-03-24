@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пітон - конструктор __init__</title>
+    <link rel="stylesheet" type="text/css" href="pages.css" />
+    <script type="text/javascript" src="pages.js"></script>
+    <script defer src="pyscript.js"></script>
+    <script type="text/javascript" src="init_constructor_11.js"></script>
+</head>
+<body onload="start()">
+    <div id="left">
+        <div id="navbar">
+            <a href="../index.html">На головну</a>
+        </div>
+        <article>
+<h2>Завдання 11:</h2>
+<p>Написати конструктор <span class="blue">__init__</span> для класа <span class="blue">Users</span>. Він повинен задати атрибути <span class="blue">name</span> та <span class="blue">email</span> для інстансів. Створити інстанс <i>a</i> з ім'ям "<span class="blue">Alex</span>"" та поштою "<span class="blue">alex@company.com</span>".</p>
+<br>
+<h2>Метаклас type</h2>
+<p>При створенні класа, його метакласом за замовчуванням є <span class="blue">type</span>. Коли створюється інстанс класа, викликається <span class="blue">type.__call__</span>.</p>
+<pre>
+class Users:
+    pass
+
+<i>a</i> = Users()
+<span class="green"># це є синтаксичним цукором для команди нижче</span>
+<i>a</i> = type.__call__(Users)
+<span class="green"># або більш універсально, бо метаклас можно і поміняти</span>
+<i>a</i> = Users.__class__.__call__(Users)
+</pre>
+<p>Атрибут <span class="blue">__call__</span> можна переписати поверх. Наприклад, для функцій виклик <span class="blue">__call__</span> виглядає інакше.</p>
+
+<pre>
+def hello(<i>a</i>, <i>b</i>):
+    print(f"Привіт, {<i>a</i>}. Твій email: {<i>b</i>}")
+
+hello("Alex", "email@company.com")
+<span class="green"># а це синтаксичний цукор для ще одного визову __call__</span>
+hello.__call__("Alex", "email@company.com")
+</pre>
+<p>Синтаксичний цукор потрібен, щоб пітон ззовні виглядав схожим на інші мови програмування.</p>
+<p>У <span class="blue">type</span> атрибут <span class="blue">__call__</span> викликає ще два атрибути всередині себе.</p>
+<pre>
+def __call__(...):
+    ...
+    <i>obj</i> = __new__(...)
+    <span class="green"># задає індивідуальну поведінку інстансу</span>
+    ...
+    __init__(<i>obj</i>, ...)
+    <span class="green"># заповнює інстансу прикладні атрибути в __dict__</span>
+    ...
+</pre>
+<p>Якщо клас перепише зверху атрибути <span class="blue">__new__</span> чи <span class="blue">__init__</span>, то він візьме під контроль створення своїх інстансів, оформить їх більш індивідуально.</p>
+<br>
+
+<h2>Конструктор __init__</h2>
+
+<p>Змінні, які привласнюються всередині класа, переробляються на атрибути класа. Вони будуть закинуті в <span class="blue">__dict__</span> на етапі створення класа.</p>
+<pre>
+class Greeting:
+    <i>s</i> = "Hello"
+
+print(Greeting.__dict__) <span class="green"># буде містити змінну s як атрибут</span>
+</pre>
+<p>У всіх інстансів буде атрибут з однаковим текстом "Hello". Припустимо, що нам треба при створенні інстанса задати кожному інстансу свій унікальний текст. В такому разі переписують зверху <span class="blue">__init__</span>.</p>
+<pre>
+class Foods:
+    def __init__(<i>self</i>, <i>name</i>, <i>glycemic_index</i>):
+       <i>self</i>.name = <i>name</i>
+       <i>self</i>.glycemic_index = <i>glycemic_index</i>
+
+<i>a</i> = Foods("Apple", 36) <span class="green"># створюємо інстанс</span>
+</pre>
+<p>При створенні інстанса виконається <span class="blue">type.__call__(Foods, 'Apple', 36)</span>. Він в свою чергу викличе підмінений <span class="blue">__init__(self, 'Apple', 36)</span>. Завдяки змінній <span class="blue">self</span>, клас задасть для свого інстанса індивідуальні значення атрибутів.</p>
+        </article>
+    </div>
+    <div id="right">
+        <textarea id="tArea" name="pcode" rows="12" cols="50"></textarea>
+        <div id="dragger"></div>
+        <div>
+            <span id="run" onclick="run()">RUN</span><span id="reset" onclick="reset()">RESET</span>
+            <span id="next" onclick="next()">NEXT</span>
+        </div>
+        <div id="result">
+        </div>
+    </div>
+</body>
+</html>

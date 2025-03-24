@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пітон - класи та інстанси</title>
+    <link rel="stylesheet" type="text/css" href="pages.css" />
+    <script type="text/javascript" src="pages.js"></script>
+    <script defer src="pyscript.js"></script>
+    <script type="text/javascript" src="classes_instances_8.js"></script>
+</head>
+<body onload="start()">
+    <div id="left">
+        <div id="navbar">
+            <a href="../index.html">На головну</a>
+        </div>
+        <article>
+<h2>Завдання 8:</h2>
+<p>Є клас <span class="blue">Users</span>. Треба його модифікувати, щоб у всіх інстансів цього класу автоматом було ім'я за замовчуванням "<span class="blue">NoName</span>". Наприклад <span class="blue"><i>b</i>.name = "NoName"</span></p>
+<p><span class="blue">pass</span> - це пуста команда. Замість неї треба написати свій код.</p>
+<br>
+
+<h2>Класи та інстанси</h2>
+
+<p>Об'єкти поділяються на:<br>- класи (творці інстансів);<br>- інстанси.</p>
+<p>Клас потрібен для створення інстансів. Будь-який клас також грає роль інстанса, оскільки його хтось створив. Клас, який створює інші класи, називають метакласом.</p>
+<p>Для об'єкта <i>s</i></p>
+<pre><i>s</i> = "Hello world!"</pre>
+ланцюг хто кого створює буде наступним:
+<pre><i>s</i>  &larr;  str  &larr;  type</pre>
+<ul>
+    <li>
+        <span class="blue">str</span> виступає класом для інстанса <i>s</i>
+    </li>
+    <li>
+        <span class="blue">type</span> виступає класом для інстанса <span class="blue">str</span>
+    </li>
+    <li>
+        <span class="blue">type</span> також є метакласом для <span class="blue">str</span>
+    </li>
+</ul>
+<p>Творець інстанса вказаний в його атрибуті <span class="blue">__class__</span>.</p>
+<br>
+<h2>Прикладні класи</h2>
+<p>Програміст може створити свій клас за допомогою синтаксиса:</p>
+<pre>
+<span class="green"># створюємо клас. Змінна Greeting буде вказувати на нього.</span>
+class Greeting:
+    <span class="green"># задаємо атрибут-дані класа</span>
+    <i>txt</i> = "Hello world!"
+
+    <span class="green"># задаємо атрибут-метод класа</span>
+    def print_to_screen(<i>self</i>):
+        print(<i>self</i>.txt)
+
+<span class="green"># створюємо інстанси класа</span>
+<i>a</i> = Greeting()
+<i>b</i> = Greeting()
+
+<span class="green"># перекриваємо атрибут класа своїм значенням</span>
+<i>b</i>.txt = "Hi!"
+
+<span class="green"># виконуємо метод інстанса</span>
+<i>a</i>.print_to_screen() <span class="green"># Hello world!</span>
+<i>b</i>.print_to_screen() <span class="green"># Hi!</span>
+</pre>
+<p>Всі змінні всередині класа будуть перероблені на атрибути класа і поміщені в <span class="blue">__dict__</span>.</p>
+<p>Про <i>self</i> буде розказано пізніше. Тут описується синтаксис створення класа та створення інстанса.</p>
+<br>
+<h2>Перекриття атрибутів</h2>
+
+<p>Інстанси окрім власних атрибутів, також наслідують від своїх класів/метакласів. На відміну від власних, наслідувані атрибути інстанс не може міняти. Але він може, так би мовити, перекрити їх зверху.</p>
+<p>Наприклад, інстанс <i>a</i> унаслідував від класа <span class="blue">Greeting</span> атрибут-метод <i>print_to_screen</i>. Інстанс <i>a</i> може створити собі атрибут з таким же ім'ям <i>print_to_screen</i>, і тоді цей атрибут перекриє атрибут класа.</p>
+<pre><i>a</i>.print_to_screen = "new text"
+<span class="green"># print_to_screen підмінений. Це більше не метод який друкує "Hello world!"</span>
+print(<i>a</i>.print_to_screen) <span class="green"># new text</span>
+</pre>
+<p>Атрибут класа буде лежати під атрибутом інстанса перекритий та невидимий. Атрибут інстанса нашарувався на нього зверху. Щоб атрибут класа знов побачити, треба видалити атрибут інстанса.</p>
+<pre>del <i>a</i>.print_to_screen
+</pre>
+<p>Тоді з-під видаленого атрибута інстанса знов визирне його тьозка - атрибут класа.</p>
+        </article>
+    </div>
+    <div id="right">
+        <textarea id="tArea" name="pcode" rows="12" cols="50"></textarea>
+        <div id="dragger"></div>
+        <div>
+            <span id="run" onclick="run()">RUN</span><span id="reset" onclick="reset()">RESET</span>
+            <span id="next" onclick="next()">NEXT</span>
+        </div>
+        <div id="result">
+        </div>
+    </div>
+</body>
+</html>

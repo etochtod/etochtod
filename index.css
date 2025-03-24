@@ -1,0 +1,42 @@
+body {
+    font: 20px/40px Verdana, Geneva, Tahoma, sans-serif;
+    padding: 2vw;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    font: 40px/80px Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 0.2rem;
+}
+
+[aria-current="page"] {
+    pointer-events: none;
+    cursor: default;
+    text-decoration: none;
+    color: gray;
+}
+
+ul {
+    background-color: #ddd;
+    border: 1px solid #888;
+    padding: 5px;
+    margin-left: 20px;
+}
+
+li {
+    padding-left: 10px;
+}
+
+ol li:nth-child(even) {
+    background-color: #ddd;
+}
+
+a {color: blue;}
+
+p {
+    text-align: justify;
+    text-indent: 4vw;
+}
+
